@@ -4,10 +4,12 @@ import { GroupTabButton } from "./group-tab-button/group-tab-button";
 import { Groups } from './services/groups';
 import { Buttons } from '../../interfaces/buttons';
 import { Tabs } from './services/tabs';
+import { TabHiragana } from "./tab-hiragana/tab-hiragana";
+import { TabKatakana } from "./tab-katakana/tab-katakana";
 
 @Component({
   selector: 'app-alfabeto-page',
-  imports: [AlfabetoTabButton, GroupTabButton],
+  imports: [AlfabetoTabButton, GroupTabButton, TabHiragana, TabKatakana],
   templateUrl: './alfabeto-page.html',
   styleUrl: './alfabeto-page.css'
 })
@@ -37,6 +39,5 @@ export class AlfabetoPage {
     this.activeGroupIndex = 0;
   }
 }
-
 
 // Criar uma tab hiragana e uma katakana  depois uma todos que junta as duas fazer o router delas e ir para os flashcards

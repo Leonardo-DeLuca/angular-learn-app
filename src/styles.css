@@ -1,3 +1,7 @@
+*{
+	font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,7 +28,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	background: linear-gradient(135deg, #142053, #991a1a, #e7ab28);
+	background: linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(56, 56, 56, 1) 79%, rgba(122, 122, 122, 1) 100%);
 	color: #333;
 	min-height: 100vh;
 	padding: 20px;

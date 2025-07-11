@@ -1,0 +1,10 @@
+hr{
+    border: 2px solid #fdbb2d;
+}
+
+h1{
+    color: #1a2a6c;
+    justify-self: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
