@@ -1,0 +1,20 @@
+<section class="page">
+    <div class="tabSelect">
+        @for (tab of tabsList; track $index) {
+            <app-alfabeto-tab-button
+                texto={{tab.text}}
+                [isActive]="activeTabIndex===tab.id"
+                (tabClicked)="setActiveTab(tab.id); resetGroup()">
+            </app-alfabeto-tab-button>
+        }
+    </div>
+    <div class="groupSelect">
+        @for (group of groupList; track $index) {
+            <app-group-tab-button
+                texto={{group.text}}
+                [isActive]="activeGroupIndex===group.id"
+                (tabClicked)="setActiveGroup(group.id)">
+            </app-group-tab-button>
+        }
+    </div>
+</section>

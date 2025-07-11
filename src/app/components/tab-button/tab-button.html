@@ -1,0 +1,6 @@
+<button class="tab-button" (click)="onCLick()" [class.active]="isActive"> 
+    @if (icone) {
+        <i  class={{icone}}></i>
+    }
+    {{text}}
+</button>

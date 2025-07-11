@@ -1,0 +1,27 @@
+.tab-button {
+    padding: 15px 40px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tab-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.tab-button.active {
+    background: white;
+    color: #1a2a6c;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}

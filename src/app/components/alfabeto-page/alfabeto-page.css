@@ -1,0 +1,23 @@
+.page{
+    background-color: white;
+    margin: 3em 18em;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    gap: 3em;
+}
+
+.tabSelect{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    justify-content: center;
+}
+
+.groupSelect{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10em;
+}

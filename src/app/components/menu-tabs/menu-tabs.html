@@ -1,0 +1,26 @@
+<section class="menu-tabs">
+    <app-tab-button 
+        text="Alfabetos" 
+        icone="fas fa-book"
+        [isActive]="activeTabIndex===0"
+        (tabClicked)="setActiveTab(0)">
+    </app-tab-button>
+    <app-tab-button
+        text="Quiz" 
+        icone="fas fa-question-circle"
+        [isActive]="activeTabIndex===1"
+        (tabClicked)="setActiveTab(1)">
+    </app-tab-button>
+    <app-tab-button
+        text="Kanji"
+        icone="fas fa-draw-polygon"
+        [isActive]="activeTabIndex===2"
+        (tabClicked)="setActiveTab(2)">
+    </app-tab-button>
+    <app-tab-button
+        text="Dicas"
+        icone="fas fa-lightbulb" 
+        [isActive]="activeTabIndex===3"
+        (tabClicked)="setActiveTab(3)">
+    </app-tab-button>
+  </section>
