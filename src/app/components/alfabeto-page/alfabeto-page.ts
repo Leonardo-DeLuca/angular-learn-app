@@ -37,3 +37,6 @@ export class AlfabetoPage {
     this.activeGroupIndex = 0;
   }
 }
+
+
+// Criar uma tab hiragana e uma katakana  depois uma todos que junta as duas fazer o router delas e ir para os flashcards
