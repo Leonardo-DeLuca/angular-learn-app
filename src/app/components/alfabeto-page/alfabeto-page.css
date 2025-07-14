@@ -1,11 +1,13 @@
 .page{
     background-color: white;
-    margin: 3em 18em;
-    border-radius: 10px;
+    margin: 2em auto;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     padding: 2em;
-    gap: 3em;
+    gap: 2em;
+    max-width: 1400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .tabSelect{
@@ -21,3 +23,14 @@
     justify-content: space-between;
     padding: 0 10em;
 }
+
+.sectionFlashCards{
+    padding: 0;
+}
+
+.flashcards {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  

@@ -8,3 +8,16 @@ h1{
     font-size: 2rem;
     font-weight: bold;
 }
+
+.flashcard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+    gap: 2em;
+    box-sizing: border-box;
+    justify-items: center;
+  }
+  
+
+.sectionFlashCards{
+    margin-bottom: 5em;
+}
