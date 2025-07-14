@@ -1,16 +1,12 @@
-<div class="flashcard">
+<div class="flashcard" (click)="toggleFlip()" [class.flipped]="flipped">
     <div class="flashcard-inner">
         <div class="flashcard-front">
-            <button class="check-btn">
-                <i class="fas fa-check"></i>
-            </button>
+            <app-check-button [(checked)]="checked"></app-check-button>
             <div class="strokes">{{strokes}}</div>
             <div class="kana">{{kana}}</div>
         </div>
         <div class="flashcard-back">
-            <button class="check-btn">
-                <i class="fas fa-check"></i>
-            </button>
+            <app-check-button [(checked)]="checked"></app-check-button>
             <div class="strokes">{{strokes}}</div>
             <div class="kana">{{kana}}</div>
             <div class="romaji">{{romaji}}</div>
