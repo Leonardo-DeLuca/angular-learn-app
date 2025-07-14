@@ -1,7 +1,7 @@
-<section class="sectionFlashCards">
-    <h1>Katakana</h1>
-    <hr>
-    <div class="flashcard-container">
-        <app-flashcard kana= "あ" romaji="a" group="vowels" strokes= "3 traços" example="あめ (ame)" meaning="chuva"></app-flashcard>
-    </div>    
-</section>
+<h1>Katakana</h1>
+<hr>
+<div class="flashcard-container">
+    @for (character of katakanaList; track $index) {
+        <app-flashcard kana={{character.kana}} romaji={{character.romaji}} group={{character.group}} strokes={{character.strokes}} example={{character.example}} meaning={{character.meaning}}></app-flashcard>
+    }
+</div>    

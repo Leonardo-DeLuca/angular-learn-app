@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Character } from '../../../interfaces/character';
+import { Groups } from './groups';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KatakanaList {
   protected katakanaList: Character[]= [
-    { kana: 'ア', romaji: 'a', group: 'vowels', strokes: '2 traços', example: 'アメリカ (amerika)', meaning: 'América' },
-            { kana: 'イ', romaji: 'i', group: 'vowels', strokes: '2 traços', example: 'イタリア (itaria)', meaning: 'Itália' },
-            { kana: 'ウ', romaji: 'u', group: 'vowels', strokes: '3 traços', example: 'ウイスキー (uisukii)', meaning: 'uísque' },
-            { kana: 'エ', romaji: 'e', group: 'vowels', strokes: '3 traços', example: 'エレベーター (erebeetaa)', meaning: 'elevador' },
-            { kana: 'オ', romaji: 'o', group: 'vowels', strokes: '3 traços', example: 'オレンジ (orenji)', meaning: 'laranja' },
+    { kana: 'ア', romaji: 'a', group: 'Vogais', strokes: '2 traços', example: 'アメリカ (amerika)', meaning: 'América' },
+            { kana: 'イ', romaji: 'i', group: 'Vogais', strokes: '2 traços', example: 'イタリア (itaria)', meaning: 'Itália' },
+            { kana: 'ウ', romaji: 'u', group: 'Vogais', strokes: '3 traços', example: 'ウイスキー (uisukii)', meaning: 'uísque' },
+            { kana: 'エ', romaji: 'e', group: 'Vogais', strokes: '3 traços', example: 'エレベーター (erebeetaa)', meaning: 'elevador' },
+            { kana: 'オ', romaji: 'o', group: 'Vogais', strokes: '3 traços', example: 'オレンジ (orenji)', meaning: 'laranja' },
             
             { kana: 'カ', romaji: 'ka', group: 'k', strokes: '2 traços', example: 'カメラ (kamera)', meaning: 'câmera' },
             { kana: 'キ', romaji: 'ki', group: 'k', strokes: '3 traços', example: 'キーボード (kiiboodo)', meaning: 'teclado' },
@@ -63,7 +64,15 @@ export class KatakanaList {
             { kana: 'ン', romaji: 'n', group: 'w', strokes: '2 traços', example: 'ペン (pen)', meaning: 'caneta' }
   ]
 
+  groupsService: Groups = inject(Groups);
+
   getAll(): Character[]{
     return this.katakanaList;
+  }
+
+  getByGroup(group: number): Character[]{
+    let groupString: string = this.groupsService.getTextById(group).toLowerCase();
+
+    return this.katakanaList.filter((character) => groupString === character.group.toLowerCase());
   }
 }

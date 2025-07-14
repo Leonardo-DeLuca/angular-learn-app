@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Flashcard } from "../../flashcard/flashcard";
 import { HiraganaList } from '../services/hiragana-list';
 import { Character } from '../../../interfaces/character';
@@ -9,11 +9,19 @@ import { Character } from '../../../interfaces/character';
   templateUrl: './tab-hiragana.html',
   styleUrl: './tab-hiragana.css'
 })
-export class TabHiragana {
+
+export class TabHiragana implements OnChanges {
+  @Input() group: number = 0;
+
+  hiraganaService: HiraganaList = inject(HiraganaList);
   hiraganaList: Character[] = [];
-  hiraganaServer: HiraganaList = inject(HiraganaList);
-  
-  constructor(){
-    this.hiraganaList = this.hiraganaServer.getAll();
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['group']) {
+      const value = changes['group'].currentValue;
+      this.hiraganaList = value
+        ? this.hiraganaService.getByGroup(value)
+        : this.hiraganaService.getAll();
+    }
   }
 }

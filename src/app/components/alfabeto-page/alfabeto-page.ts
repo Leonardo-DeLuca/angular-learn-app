@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output } from '@angular/core';
 import { AlfabetoTabButton } from "./alfabeto-tab-button/alfabeto-tab-button";
 import { GroupTabButton } from "./group-tab-button/group-tab-button";
 import { Groups } from './services/groups';
@@ -15,7 +15,7 @@ import { TabKatakana } from "./tab-katakana/tab-katakana";
 })
 export class AlfabetoPage {
   activeTabIndex: number = 0;
-  activeGroupIndex: number = 0;
+  @Output() activeGroupIndex: number = 0;
 
   groupList: Buttons[] = [];
   groupService: Groups = inject(Groups);
@@ -39,5 +39,3 @@ export class AlfabetoPage {
     this.activeGroupIndex = 0;
   }
 }
-
-// Criar uma tab hiragana e uma katakana  depois uma todos que junta as duas fazer o router delas e ir para os flashcards

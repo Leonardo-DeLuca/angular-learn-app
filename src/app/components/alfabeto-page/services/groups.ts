@@ -55,4 +55,10 @@ export class Groups {
   getAll(): Buttons[] {
     return this.groupList;
   }
+
+  getTextById(id: number): string{
+    let group = this.groupList.find((group) => group.id === id);
+
+    return !group ? "" : group.text;
+  }
 }

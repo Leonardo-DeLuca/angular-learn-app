@@ -20,14 +20,14 @@
     <div class="flashcards">
         @switch (activeTabIndex) {
             @case (1) {
-                <app-tab-hiragana></app-tab-hiragana>
+                <app-tab-hiragana [group]="activeGroupIndex"></app-tab-hiragana>
             }
             @case (2) {
-                <app-tab-katakana></app-tab-katakana>
+                <app-tab-katakana [group]="activeGroupIndex"></app-tab-katakana>
             }
             @default {
-                <app-tab-hiragana></app-tab-hiragana>
-                <app-tab-katakana></app-tab-katakana>
+                <app-tab-hiragana [group]="activeGroupIndex"></app-tab-hiragana>
+                <app-tab-katakana [group]="activeGroupIndex"></app-tab-katakana>
             }
         }
 
