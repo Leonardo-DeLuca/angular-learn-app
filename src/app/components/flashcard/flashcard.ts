@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CheckButton } from "../check-button/check-button";
 
 @Component({
@@ -15,9 +15,15 @@ export class Flashcard {
   @Input() meaning: string = "";
   @Input() group: string = "";
   flipped: boolean = false;
-  checked: boolean = false;
+  @Input() checked: boolean = false;
+
+  @Output() checkedChange = new EventEmitter<boolean>()
 
   toggleFlip(): void {
     this.flipped = !this.flipped;
-  }  
+  }
+
+  onCheckedChange(newVal: boolean) {
+    this.checkedChange.emit(newVal);
+  }
 }

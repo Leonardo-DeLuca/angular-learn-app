@@ -20,16 +20,16 @@
     <div class="flashcards">
         @switch (activeTabIndex) {
             @case (1) {
-                <app-tab-hiragana [group]="activeGroupIndex"></app-tab-hiragana>
+                <app-tab-hiragana [group]="activeGroupIndex" [checkedStates]="checkedStates" (checkedChange)="onCheckedChange($event.kana, $event.checked)"></app-tab-hiragana>
             }
             @case (2) {
-                <app-tab-katakana [group]="activeGroupIndex"></app-tab-katakana>
+                <app-tab-katakana [group]="activeGroupIndex" [checkedStates]="checkedStates" (checkedChange)="onCheckedChange($event.kana, $event.checked)"></app-tab-katakana>
             }
             @default {
-                <app-tab-hiragana [group]="activeGroupIndex"></app-tab-hiragana>
-                <app-tab-katakana [group]="activeGroupIndex"></app-tab-katakana>
+                <app-tab-hiragana [group]="activeGroupIndex" [checkedStates]="checkedStates" (checkedChange)="onCheckedChange($event.kana, $event.checked)"></app-tab-hiragana>
+                <app-tab-katakana [group]="activeGroupIndex" [checkedStates]="checkedStates" (checkedChange)="onCheckedChange($event.kana, $event.checked)"></app-tab-katakana>
             }
         }
-
     </div>
+    <app-progress-bar [totalChecked]="totalChecked"></app-progress-bar>
 </section>

@@ -32,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	background: linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(56, 56, 56, 1) 79%, rgba(122, 122, 122, 1) 100%);
+	background: linear-gradient(180deg, #0b122e 0%, #121d4b 79%, #182763 100%);
 	color: #333;
 	min-height: 100vh;
 	padding: 20px;

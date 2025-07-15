@@ -1,3 +1,10 @@
 import { Routes } from '@angular/router';
+import { AlfabetoPage } from './components/alfabeto-page/alfabeto-page';
+import { QuizPage } from './components/quiz-page/quiz-page';
 
-export const routes: Routes = [];
+
+export const routes: Routes = [
+    {path: '', redirectTo: 'alfabeto', pathMatch: 'full'},
+    {path: 'alfabeto', component: AlfabetoPage},
+    {path: 'quiz', component: QuizPage}
+];

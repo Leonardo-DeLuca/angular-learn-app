@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { Character } from '../../../interfaces/character';
+import { Character } from '../interfaces/character';
 import { Groups } from './groups';
-import { Buttons } from '../../../interfaces/buttons';
+import { Buttons } from '../interfaces/buttons';
 
 @Injectable({
   providedIn: 'root'
@@ -75,5 +75,9 @@ export class HiraganaList {
     let groupString: string = this.groupsService.getTextById(group).toLowerCase();
 
     return this.hiraganaList.filter((character) => character.group.toLowerCase() === groupString);
+  }
+
+  getLenght(): number{
+    return this.hiraganaList.length;
   }
 }

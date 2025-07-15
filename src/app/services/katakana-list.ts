@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Character } from '../../../interfaces/character';
+import { Character } from '../interfaces/character';
 import { Groups } from './groups';
 
 @Injectable({
@@ -74,5 +74,9 @@ export class KatakanaList {
     let groupString: string = this.groupsService.getTextById(group).toLowerCase();
 
     return this.katakanaList.filter((character) => groupString === character.group.toLowerCase());
+  }
+
+  getLenght(): number{
+    return this.katakanaList.length;
   }
 }

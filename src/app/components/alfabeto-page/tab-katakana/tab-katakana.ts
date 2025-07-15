@@ -1,7 +1,7 @@
-import { Component, inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Flashcard } from "../../flashcard/flashcard";
 import { Character } from '../../../interfaces/character';
-import { KatakanaList } from '../services/katakana-list';
+import { KatakanaList } from '../../../services/katakana-list';
 
 @Component({
   selector: 'app-tab-katakana',
@@ -11,6 +11,9 @@ import { KatakanaList } from '../services/katakana-list';
 })
 export class TabKatakana implements OnChanges{
   @Input() group: number = 0;
+  @Input() checkedStates: Record<string, boolean> = {}
+  
+  @Output() checkedChange = new EventEmitter<{ kana: string, checked: boolean }>();
 
   katakanaList: Character[] = [];
   katakanaService: KatakanaList = inject(KatakanaList);
@@ -22,5 +25,9 @@ export class TabKatakana implements OnChanges{
         ? this.katakanaService.getByGroup(value)
         : this.katakanaService.getAll();
     }
+  }
+
+  onCardChecked(event: {kana: string, checked: boolean}){
+    this.checkedChange.emit(event);
   }
 }

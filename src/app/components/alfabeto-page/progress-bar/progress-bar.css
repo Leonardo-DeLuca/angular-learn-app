@@ -1,0 +1,83 @@
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.progress-text {
+    text-align: center;
+    font-weight: bold;
+    color: #1a2a6c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.progress-bar {
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-title {
+    color: #1a2a6c;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    max-height: 500px;  /* valor estimado do tamanho total aberto */
+    overflow: hidden;
+}
+
+.progress-section.collapsed {
+    max-height: 60px;
+    padding: 10px 20px; /* reduz o padding para compactar */
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle-btn{
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #1a2a6c;
+}
+
+.toggle-btn i{
+    transition: transform 0.5s ease;
+    
+}
+
+.toggle-btn i.rotated{
+    transform: rotate(180deg);
+}

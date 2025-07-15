@@ -7,7 +7,7 @@
     padding: 2em;
     gap: 2em;
     max-width: 1400px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 40px rgba(255, 255, 255, .6);
 }
 
 .tabSelect{
@@ -33,4 +33,3 @@
     flex-direction: column;
     gap: 1em;
   }
-  

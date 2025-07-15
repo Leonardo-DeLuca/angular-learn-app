@@ -1,7 +1,7 @@
 <h1>Hiragana</h1>
 <hr>
 <div class="flashcard-container">
-    @for (character of hiraganaList; track $index) {
-        <app-flashcard kana={{character.kana}} romaji={{character.romaji}} group={{character.group}} strokes={{character.strokes}} example={{character.example}} meaning={{character.meaning}}></app-flashcard>
+    @for (character of hiraganaList; track character.kana) {
+        <app-flashcard  (checkedChange)="onCardChecked({ kana: character.kana, checked: $event })" [checked]="checkedStates[character.kana] || false" kana={{character.kana}} romaji={{character.romaji}} group={{character.group}} strokes={{character.strokes}} example={{character.example}} meaning={{character.meaning}}></app-flashcard>
     }
 </div>

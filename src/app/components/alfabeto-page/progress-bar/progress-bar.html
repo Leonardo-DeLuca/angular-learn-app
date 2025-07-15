@@ -1,0 +1,14 @@
+<div class="progress-section" [class.collapsed]="isCollapsed">
+    <div class="progress-header">
+        <h3 class="progress-title"><i class="fas fa-chart-line"></i> Seu Progresso</h3>
+        <button class="toggle-btn"(click)="collapseBar()">
+            <i class="fas fa-chevron-up" [class.rotated]="isCollapsed"></i>
+        </button>
+    </div>
+    <div class="progress-content">
+        <div class="progress-bar">
+            <div class="progress-fill" [style.width]="progress + '%'"></div>
+        </div>
+        <div class="progress-text"><i class="fas fa-check-circle"></i>{{progress}}% Completo</div>
+    </div>
+</div>

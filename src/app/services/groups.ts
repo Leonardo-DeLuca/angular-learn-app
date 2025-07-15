@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Buttons } from '../../../interfaces/buttons';
+import { Buttons } from '../interfaces/buttons';
 
 @Injectable({
   providedIn: 'root'

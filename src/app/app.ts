@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderTitle } from './components/header-title/header-title';
-import { MenuTabs } from "./components/menu-tabs/menu-tabs";
-import { AlfabetoPage } from "./components/alfabeto-page/alfabeto-page";
+import { MenuTabs } from './components/menu-tabs/menu-tabs';
+
 @Component({
   selector: 'app-root',
-  imports: [HeaderTitle, MenuTabs, AlfabetoPage],
+  standalone: true,
+  imports: [RouterOutlet, HeaderTitle, MenuTabs],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

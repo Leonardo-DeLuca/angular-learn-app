@@ -5,19 +5,30 @@
     justify-items: center;
 }
 
-.title h1{
-    font-size: 2.8rem;
-    font-weight: 700;
-}
-
 .title h1 .japanese {
-    font-weight: 700;
+    font-weight: 1000;
+    text-shadow: 0 5px 5px #3d63fc;
 }
 
 .title p {
     font-size: 1.3rem;
     font-weight: 400;
     width: 24em;
-    margin: 1em;
-    opacity: 0.9;
+    margin: 1em 0 3em 0;
+    opacity: .9;
+}
+
+.title h1 {
+    font-size: 2.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.title img {
+    width: 3em;
+    height: auto;
+    display: block;
 }
