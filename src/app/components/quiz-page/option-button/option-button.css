@@ -1,0 +1,26 @@
+.option-btn {
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    background: #e0e0e0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.option-btn:hover {
+    background: #d0d0d0;
+    transform: translateY(-3px);
+}
+
+.option-btn.correct {
+    background: #4CAF50;
+    color: white;
+}
+
+.option-btn.incorrect {
+    background: #f44336;
+    color: white;
+}

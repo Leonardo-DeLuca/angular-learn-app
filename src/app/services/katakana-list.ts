@@ -79,4 +79,9 @@ export class KatakanaList {
   getLenght(): number{
     return this.katakanaList.length;
   }
+
+  getRandom(): Character{
+    const randomIndex = Math.floor(Math.random() * this.katakanaList.length);
+    return this.katakanaList[randomIndex];
+  }
 }

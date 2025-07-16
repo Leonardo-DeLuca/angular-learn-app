@@ -1,1 +1,45 @@
-<p>quiz-page works!</p>
+<section class="page">
+    <div id="quiz" class="tab-content">
+      <div class="quiz-container">
+  
+        <div class="question-container">
+          <h2>Qual é a romanização deste caractere?</h2>
+          <div class="question-kana">{{ question }}</div>
+        </div>
+  
+        <div class="options-container">
+          @for (alt of alternativas; track $index) {
+            <app-option-button
+              [altText]="alt"
+              [status]="getStatus(alt)"
+              [disabled]="!!selectedAnswer"
+              (respostaSelecionada)="verificaResposta($event)">
+            </app-option-button>
+          }
+        </div>
+  
+        <div class="quiz-controls">
+          <button class="quiz-btn" [disabled]="!selectedAnswer" (click)="proximaPergunta()">
+            Próxima Pergunta <i class="fas fa-arrow-right"></i>
+          </button>
+          <button class="quiz-btn secondary" (click)="resetQuiz()">
+            Reiniciar Quiz <i class="fas fa-redo"></i>
+          </button>
+        </div>
+  
+        <div class="stats">
+          <div class="stat-box">
+            <i class="fas fa-check-circle"></i> Acertos: <span>{{ corretas }}</span>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-times-circle"></i> Erros: <span>{{ erradas }}</span>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-question-circle"></i> Perguntas: <span>{{ perguntasTotais }}</span>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  

@@ -80,4 +80,9 @@ export class HiraganaList {
   getLenght(): number{
     return this.hiraganaList.length;
   }
+
+  getRandom(): Character{
+    const randomIndex = Math.floor(Math.random() * this.hiraganaList.length);
+    return this.hiraganaList[randomIndex];
+  }
 }
