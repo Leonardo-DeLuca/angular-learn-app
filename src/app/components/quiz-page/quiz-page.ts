@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { HiraganaList } from '../../services/hiragana-list';
 import { KatakanaList } from '../../services/katakana-list';
 import { OptionButton } from './option-button/option-button';
+import { LastQuestion } from '../../interfaces/last-question';
 
 @Component({
   selector: 'app-quiz-page',
@@ -23,18 +24,25 @@ export class QuizPage {
   katakanaService = inject(KatakanaList);
 
   ngOnInit(): void {
-    this.corretas = Number(localStorage.getItem("Acertos")) ?? 0;
-    this.erradas =  Number(localStorage.getItem("Erros")) ?? 0;
-    this.perguntasTotais = Number(localStorage.getItem("Perguntas") ?? 1) - 1;
-    !localStorage.getItem("LastQuetion") ? this.proximaPergunta() : this.setPerguntaAntiga(JSON.parse(localStorage.getItem("LastQuetion")!));
+    this.corretas = Number(localStorage.getItem("Acertos")) || 0;
+    this.erradas =  Number(localStorage.getItem("Erros")) || 0;
+    this.perguntasTotais = Number(localStorage.getItem('Perguntas')) || 0;
+
+    const raw = localStorage.getItem('LastQuestion');
+    if (raw) {
+      const last: LastQuestion = JSON.parse(raw);
+      this.restoreQuestion(last);
+    } else {
+      this.proximaPergunta();
+    }
   }
 
   resetQuiz(): void {
     this.corretas = 0;
     this.erradas =  0;
     this.perguntasTotais = 0;
+    localStorage.removeItem('LastQuestion');
     this.proximaPergunta();
-    this.salvaPontuacao();
   }
 
   geraNovoCaracter(): { kana: string; romaji: string } {
@@ -51,15 +59,19 @@ export class QuizPage {
     this.correctAnswer = novo.romaji;
     this.alternativas = this.geraAlternativas(novo.romaji);
     this.selectedAnswer = null;
+
     this.perguntasTotais++;
-    this.salvaLastQuestion();
+    this.salvaEstado();
   }
 
-  setPerguntaAntiga(pergunta: {question: string, correctAnswer: string, alternativas: string[]}): void{
-    this.question = pergunta.question;
-    this.correctAnswer = pergunta.correctAnswer;
-    this.alternativas = pergunta.alternativas;
-    this.perguntasTotais++;
+  restoreQuestion(last: LastQuestion): void {
+    this.question = last.question;
+    this.correctAnswer =
+      this.hiraganaService.getByKana(this.question)?.romaji ??
+      this.katakanaService.getByKana(this.question)?.romaji ??
+      (() => { throw new Error(`Kana "${this.question}" não encontrado.`); })();
+    this.alternativas = last.alternativas;
+    this.selectedAnswer = last.selectedAnswer;
   }
 
   geraAlternativas(correctRomaji: string): string[] {
@@ -84,7 +96,7 @@ export class QuizPage {
       this.erradas++;
     }
 
-    this.salvaPontuacao();
+    this.salvaEstado();
   }
 
   getStatus(alt: string): 'correct' | 'incorrect' | 'neutral' {
@@ -94,19 +106,16 @@ export class QuizPage {
     return 'neutral';
   }
 
-  salvaPontuacao(): void{
-    localStorage.setItem("Erros", this.erradas.toString());
-    localStorage.setItem("Acertos", this.corretas.toString());
-  }
-
-  salvaLastQuestion(): void{
-    const lastQuestion: {question: string, correctAnswer: string, alternativas: string[]} = {
+  private salvaEstado(): void {
+    const last: LastQuestion = {
       question: this.question,
-      correctAnswer: this.correctAnswer,
-      alternativas: this.alternativas
+      alternativas: this.alternativas,
+      selectedAnswer: this.selectedAnswer
     };
 
-    localStorage.setItem("Perguntas", this.perguntasTotais.toString());
-    localStorage.setItem("LastQuetion", JSON.stringify(lastQuestion));
+    localStorage.setItem('Erros', this.erradas.toString());
+    localStorage.setItem('Acertos', this.corretas.toString());
+    localStorage.setItem('Perguntas', this.perguntasTotais.toString());
+    localStorage.setItem('LastQuestion', JSON.stringify(last));
   }
 }

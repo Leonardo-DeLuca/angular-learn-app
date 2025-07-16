@@ -85,4 +85,10 @@ export class HiraganaList {
     const randomIndex = Math.floor(Math.random() * this.hiraganaList.length);
     return this.hiraganaList[randomIndex];
   }
+
+  getByKana(kana: string): Character{
+    const result = this.hiraganaList.find(character => character.kana === kana);
+
+    return result!;
+  } 
 }

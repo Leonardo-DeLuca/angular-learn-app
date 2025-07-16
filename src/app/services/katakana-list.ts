@@ -84,4 +84,10 @@ export class KatakanaList {
     const randomIndex = Math.floor(Math.random() * this.katakanaList.length);
     return this.katakanaList[randomIndex];
   }
+
+  getByKana(kana: string): Character{
+    const result = this.katakanaList.find(character => character.kana === kana);
+
+    return result!;
+  } 
 }
