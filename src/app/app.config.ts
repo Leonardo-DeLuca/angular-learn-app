@@ -1,6 +1,6 @@
 import { ApplicationConfig, EnvironmentInjector, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { enviroment } from '../enviroments/enviroment'
+import { environment } from '../environments/environment'
 
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -11,6 +11,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes), provideFirebaseApp(() => initializeApp(enviroment.firebaseConfig)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())
+    provideRouter(routes),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), 
+    provideAuth(() => getAuth()), 
+    provideFirestore(() => getFirestore())
   ]
 };

@@ -15,8 +15,13 @@ export class AuthService {
     });
   }
 
-  loginWithGoogle() {
-    return signInWithPopup(this.auth, new GoogleAuthProvider());
+  async loginWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: 'select_account'
+    });
+  
+    return await signInWithPopup(this.auth, provider);
   }
 
   logout() {
@@ -28,5 +33,9 @@ export class AuthService {
       console.warn('AuthService: Nenhum usuário autenticado no momento.');
     }
     return this.auth.currentUser;
-  }  
+  }
+
+  get authInstance(): Auth{
+    return this.auth;
+  }
 }

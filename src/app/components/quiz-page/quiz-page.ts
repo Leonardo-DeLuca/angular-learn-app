@@ -5,11 +5,12 @@ import { OptionButton } from './option-button/option-button';
 import { LastQuestion } from '../../interfaces/last-question';
 import { ScoreService } from '../../services/score';
 import { AuthService } from '../../services/auth.service';
+import { InputResp } from "./input-resp/input-resp";
 
 @Component({
   selector: 'app-quiz-page',
   standalone: true,
-  imports: [OptionButton],
+  imports: [OptionButton, InputResp],
   templateUrl: './quiz-page.html',
   styleUrl: './quiz-page.css'
 })
@@ -17,9 +18,11 @@ export class QuizPage {
   question = "";
   correctAnswer = "";
   alternativas: string[] = [];  
-  corretas = 0;
-  erradas = 0;
-  perguntasTotais = 0;
+  corretas: number = 0;
+  erradas: number = 0;
+  perguntasTotais: number = 0;
+  modoEscrita: boolean = false;
+  statusInput: string = "";
 
   selectedAnswer: string | null = null;
 
@@ -40,6 +43,7 @@ export class QuizPage {
         this.corretas = score.correct;
         this.erradas = score.wrong;
         this.perguntasTotais = score.total;
+        this.modoEscrita = score.modoEscrita ?? false;
 
         if (score.lastQuestion) {
           this.restoreQuestion(score.lastQuestion);
@@ -66,6 +70,7 @@ export class QuizPage {
     this.correctAnswer = novo.romaji;
     this.alternativas = this.geraAlternativas(novo.romaji);
     this.selectedAnswer = null;
+    this.statusInput = "";
     this.perguntasTotais++;
     this.salvaEstado();
   }
@@ -78,6 +83,12 @@ export class QuizPage {
       (() => { throw new Error(`Kana "${this.question}" não encontrado.`); })();
     this.alternativas = last.alternativas;
     this.selectedAnswer = last.selectedAnswer ?? null;
+
+    if (this.selectedAnswer) {
+      this.statusInput = this.selectedAnswer === this.correctAnswer ? 'correct' : 'incorrect';
+    } else {
+      this.statusInput = '';
+    }
   }
 
   geraNovoCaracter(): { kana: string; romaji: string } {
@@ -103,11 +114,25 @@ export class QuizPage {
 
     if (resposta === this.correctAnswer) {
       this.corretas++;
+      this.statusInput = 'correct';
     } else {
       this.erradas++;
+      this.statusInput = 'incorrect';
     }
 
     this.salvaEstado();
+  }
+
+  verificaRespostaTexto(resposta: string): void{
+    this.verificaResposta(resposta);
+  }
+
+  onEnterPress(resposta: string): void {
+    if (!this.selectedAnswer) {
+      this.verificaRespostaTexto(resposta);
+    } else {
+      this.novaPergunta();
+    }
   }
 
   getStatus(alt: string): 'correct' | 'incorrect' | 'neutral' {
@@ -123,6 +148,11 @@ export class QuizPage {
       alternativas: this.alternativas,
       selectedAnswer: this.selectedAnswer
     };
-    this.scoreService.saveScore(this.corretas, this.erradas, this.perguntasTotais, last);
+    this.scoreService.saveScore(this.corretas, this.erradas, this.perguntasTotais, last, this.modoEscrita);
+  }
+
+  alterarModo() : void{
+    this.modoEscrita = !this.modoEscrita;
+    this.salvaEstado();
   }
 }

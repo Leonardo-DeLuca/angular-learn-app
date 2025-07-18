@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 export class ScoreService {
   constructor(private firestore: Firestore, private authService: AuthService) {}
 
-  async saveScore(correct: number, wrong: number, total: number, lastQuestion: any = null) {
+  async saveScore(correct: number, wrong: number, total: number, lastQuestion: any = null, modoEscrita: boolean = false) {
     let user = this.authService.currentUser();
 
     if (!user) {
@@ -22,6 +22,7 @@ export class ScoreService {
       wrong,
       total,
       lastQuestion,
+      modoEscrita,
       updatedAt: new Date()
     };
 

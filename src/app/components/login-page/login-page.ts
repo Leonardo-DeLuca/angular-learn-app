@@ -12,11 +12,12 @@ import { onAuthStateChanged } from '@firebase/auth';
 export class LoginPage {
   user: User | null = null;
 
-  constructor(private authService: AuthService){
-    onAuthStateChanged(authService['auth'], (user) => {
+  constructor(private authService: AuthService) {
+    this.authService.currentUser$.subscribe(user => {
       this.user = user;
-    })
+    });
   }
+  
 
   login(){
     this.authService.loginWithGoogle()

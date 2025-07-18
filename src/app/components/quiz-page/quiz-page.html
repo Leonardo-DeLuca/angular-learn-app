@@ -7,23 +7,29 @@
           <div class="question-kana">{{ question }}</div>
         </div>
   
-        <div class="options-container">
-          @for (alt of alternativas; track $index) {
-            <app-option-button
-              [altText]="alt"
-              [status]="getStatus(alt)"
-              [disabled]="!!selectedAnswer"
-              (respostaSelecionada)="verificaResposta($event)">
-            </app-option-button>
-          }
-        </div>
-  
+        @if (!modoEscrita) {
+          <div class="options-container">
+            @for (alt of alternativas; track $index) {
+              <app-option-button
+                [altText]="alt"
+                [status]="getStatus(alt)"
+                [disabled]="!!selectedAnswer"
+                (respostaSelecionada)="verificaResposta($event)">
+              </app-option-button>
+            }
+          </div>
+        }@else {
+          <app-input-resp [valor]="selectedAnswer ?? ''" [readonly]="!!selectedAnswer" [status]="statusInput" (enterPress)="onEnterPress($event)"></app-input-resp>
+        }
         <div class="quiz-controls">
           <button class="quiz-btn" [disabled]="!selectedAnswer" (click)="novaPergunta()">
             Próxima Pergunta <i class="fas fa-arrow-right"></i>
           </button>
           <button class="quiz-btn secondary" (click)="resetQuiz()">
             Reiniciar Quiz <i class="fas fa-redo"></i>
+          </button>
+          <button class="quiz-btn mode" [disabled]="selectedAnswer" (click)="alterarModo()">
+            Alterar Modo<i class="fa fa-arrows-rotate"></i>
           </button>
         </div>
   

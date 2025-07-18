@@ -1,0 +1,11 @@
+<div class="input-container">
+    <input #inputResp
+        [readonly]="readonly"
+        [class]="classe"
+        type="text"
+        [value]="valor"
+        (keyup.enter)="onKeyUpEnter(inputResp.value)"
+    >
+    <button [disabled]="readonly" class="send-resp" (click)="onKeyUpEnter(inputResp.value)">OK</button>
+
+</div>
