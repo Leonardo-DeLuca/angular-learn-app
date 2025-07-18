@@ -31,7 +31,7 @@ export class MenuTabs{
       this.activeTabIndex = 1;
     } else if (currentUrl.startsWith('/kanji')) {
       this.activeTabIndex = 2;
-    } else if (currentUrl.startsWith('/dicas')) {
+    } else if (currentUrl.startsWith('/login')) {
       this.activeTabIndex = 3;
     }
   }
@@ -53,7 +53,7 @@ export class MenuTabs{
         this.router.navigate(['/kanji']);
         break;
       case 3:
-        this.router.navigate(['/dicas']);
+        this.router.navigate(['/login']);
         break;
     }
   }

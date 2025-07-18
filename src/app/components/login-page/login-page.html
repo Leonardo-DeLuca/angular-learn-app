@@ -1,0 +1,13 @@
+<section class="page">
+    @if (!user) {
+        <h2>Realize o login para salvar sua pontuação no quiz!</h2>
+        <button (click)="login()" class="login-btn"><i class="fa-brands fa-google"></i> Realizar login</button>
+    }
+    @if (user) {
+        <div class="user-info">
+            <img [src]="user.photoURL" alt="Avatar" width="50">
+            <p>Bem vindo, {{user.displayName}}</p>
+        </div>
+        <button (click)="logout()" class="logout-btn">Logout</button>
+    }
+</section>
