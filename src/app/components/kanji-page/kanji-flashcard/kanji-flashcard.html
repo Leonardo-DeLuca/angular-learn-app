@@ -1,0 +1,19 @@
+<div class="flashcard" (click)="toggleFlip()" [class.flipped]="flipped">
+    <div class="flashcard-inner">
+        <div class="flashcard-front">
+            <app-check-button [checked]="checked" (checkedChange)="onCardChecked({ kana: character, checked: $event })"></app-check-button>
+            <div class="strokes">{{strokes}} traços</div>
+            <div class="character">{{character}}</div>
+        </div>
+        <div class="flashcard-back">
+            <app-check-button [checked]="checked" (checkedChange)="onCardChecked({ kana: character, checked: $event })"></app-check-button>
+            <div class="strokes">{{strokes}} traços</div>
+            <div class="character">{{character}}</div>
+            <div class="readings">{{readings}}</div>
+            <div class="example-container">
+                <div class="example-word">{{example}}</div>
+                <div class="example-meaning">{{meaning}}</div>
+            </div>
+        </div>
+    </div>  
+</div>

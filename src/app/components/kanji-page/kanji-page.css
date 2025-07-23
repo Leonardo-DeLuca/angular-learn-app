@@ -9,3 +9,11 @@
     max-width: 1400px;
     box-shadow: 0 10px 40px rgba(255, 255, 255, .6);
 }
+
+.flashcard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24em, 1fr));
+    gap: 2em;
+    box-sizing: border-box;
+    justify-items: center;
+}

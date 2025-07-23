@@ -1,7 +1,7 @@
 <div class="flashcard" (click)="toggleFlip()" [class.flipped]="flipped">
     <div class="flashcard-inner">
         <div class="flashcard-front">
-            <app-check-button [checked]="checked" (checkedChange)="onCheckedChange($event)"></app-check-button>
+            <app-check-button [(checked)]="checked" (checkedChange)="onCheckedChange($event)"></app-check-button>
             <div class="strokes">{{strokes}}</div>
             <div class="kana">{{kana}}</div>
         </div>

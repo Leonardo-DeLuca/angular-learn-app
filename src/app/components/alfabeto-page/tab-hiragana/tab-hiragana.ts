@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { Flashcard } from "../../flashcard/flashcard";
+import { Flashcard } from "../flashcard/flashcard";
 import { HiraganaList } from '../../../services/hiragana-list';
 import { Character } from '../../../interfaces/character';
 

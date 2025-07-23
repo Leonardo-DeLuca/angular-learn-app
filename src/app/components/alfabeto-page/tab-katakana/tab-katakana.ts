@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { Flashcard } from "../../flashcard/flashcard";
+import { Flashcard } from "../flashcard/flashcard";
 import { Character } from '../../../interfaces/character';
 import { KatakanaList } from '../../../services/katakana-list';
 

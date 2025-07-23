@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CheckButton } from "../check-button/check-button";
+import { CheckButton } from "../../check-button/check-button";
 
 @Component({
   selector: 'app-flashcard',

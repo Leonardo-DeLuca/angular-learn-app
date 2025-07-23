@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { AlfabetoPage } from './components/alfabeto-page/alfabeto-page';
 import { QuizPage } from './components/quiz-page/quiz-page';
-import { KanjiPage } from './components/kanji-page/kanji-page';
 import { LoginPage } from './components/login-page/login-page';
+import { KanjiPage } from './components/kanji-page/kanji-page';
 
 
 export const routes: Routes = [
