@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, User } from '@angular/fire/auth';
+import { User } from '@angular/fire/auth';
 import { AuthService } from '../../services/auth.service';
-import { onAuthStateChanged } from '@firebase/auth';
 
 @Component({
   selector: 'app-login-page',

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TabButton } from "../tab-button/tab-button";
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
